@@ -1,0 +1,289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <title>FormMail Usage</title>
+ </head>
+ <body bgcolor="#FFFFFF" text="#000000">
+
+<table border="0" width="600" cellspacing="1" cellpadding="3"><tr><td>
+
+<tr><td colspan="2"><a name="form_config"><h1>Form Configuration</h1></a><br>
+<br>
+  The action of your form needs to point towards the PHP FormMail script (obviously), and
+  the method must be POST.<br>
+  <br>
+</td></tr>
+    <tr><td align="right" valign="top"><b>Description:</b></td>
+         <td>Opening Form tag.<br></td></tr>
+     <tr><td align=right><b>Example:</b><td nowrap><tt>&lt;form method="POST" action="formmail.php"&gt;</tt></td></tr>
+
+     <tr><td colspan="2"><hr size=1></td></tr>
+
+<tr><td colspan="2"><a name="necessary_form_fields"><h2>Required Form Fields</h2></a>
+  <br><br>
+    There is only one form field that you must have in your form, for
+    PHP FormMail to work correctly.  This is the recipient field.</td></tr>
+
+     <tr><td align="right"><b><a name="recipient">Field:</a></b></td><td><tt>recipient</tt><br></td></tr>
+     <tr><td align="right" valign="top"><b>Description:</b></td>
+         <td>This form field allows you to specify what email address you want your
+             form results to be mailed. You may specify multiple recipients
+             by including multiple email addresses, seperated by commas.<br></td></tr>
+
+     <tr><td align="right"><b>Example:</b></td><td nowrap><tt>&lt;input type="hidden" name="recipient" value="email@example.com"&gt;</tt></td></tr>
+
+
+  <tr><td colspan="2"><hr size=1></td></tr>
+
+  <tr><td colspan="2"><a name="optional_form_fields"><h2>Optional Form Fields</h2></a></td></tr>
+
+    <tr><td align="right"><b><a name="subject">Field:</a></b></td><td><tt>subject</tt><br></td></tr>
+    <tr><td align="right" valign="top"><b>Description:</b></td>
+        <td>The subject field allows you to specify the subject that will
+            appear in the results email that is sent. If you do not specify this option,
+            then the script will default to a message subject of:<br>
+            <tt>Form Submission<tt><br></td></tr>
+    <tr><td align="right" valign="top"><b>Example:</b></td><td>If you wish to choose what the subject is:<br>
+<tt>&lt;input type="hidden" name="subject" value="Your Subject"&gt;</tt><br>
+<br>
+To allow the user to choose a subject:<br>
+<tt>&lt;input type="text" name="subject"&gt;</tt></td></tr>
+
+
+   <tr><td colspan="2"><hr size=1></td></tr>
+
+
+     <tr><td align="right"><b><a name="email">Field:</a></b></td><td><tt>email</tt><br></td></tr>
+        <tr><td align="right" valign="top"><b>Description:</b></td><td>The <i>email</i> field will be used
+     in the From: field of the results email that is sent. This allows you to reply to form users by simply
+     replying to the results email.<br></td></tr>
+     <tr><td align="right"><b>Example:</b></td><td><tt>&lt;input type="text" name="email"&gt;</tt></td></tr>
+     
+   <tr><td colspan="2"><hr size=1></td></tr>
+
+
+     <tr><td align="right"><b><a name="cc_email">Field:</a></b></td><td><tt>cc_email</tt><br></td></tr>
+        <tr><td align="right" valign="top"><b>Description:</b></td><td>If the <i>cc_email</i> field is set to 1,
+        the form data will be Carbon Copied to the email address filled out in the "email" field (this field will not
+        do anything if the "email" field is not used, or is left blank by the person filling out the form).<br></td></tr>
+     <tr><td align="right"><b>Example:</b></td><td><tt>&lt;input type=hidden name="cc_email" value="1"&gt;</tt></td></tr>
+     
+   <tr><td colspan="2"><hr size=1></td></tr>
+
+     <tr><td align="right"><b><a name="redirect">Field:</a></b></td><td><tt>redirect</tt><br></td></tr>
+     <tr><td align="right" valign="top"><b>Description:</b></td><td>The <i>redirect</i> field allows you to
+     send users to a custom results page, instead of seeing the default message.</td></tr>
+     <tr><td align="right" valign="top"><b>Example:</b></td><td nowrap><tt>&lt;input type="hidden" name="redirect" value="http://www.example.com/example.html"&gt;</tt></td></tr>
+
+
+   <tr><td colspan="2"><hr size=1></td></tr>
+
+
+     <tr><td align="right"><b><a name="required">Field:</a></b></td><td><tt>required</tt><br></td></tr>
+     <tr><td align="right" valign="top"><b>Description:</b></td><td>The <i>required</i> field allows you
+     to specify fields that must be filled in for the form to be successfully submitted. If any of the <i>required</i>
+     fields are left blank, an error message will be diplayed with a link back to the form and instructions to
+     complete all required fields. You may specify multiple fields by including multiple field names, seperated by commas.<br>
+            <br>
+             To specify a customized error page, see <i>missing_fields_redirect</i>.<br>
+             To specify a customized error message, see <i>missing_fields_message</i>.</td></tr>
+     <tr><td align="right" valign="top"><b>Example:</b></td><td><tt>&lt;input type="hidden" name="required" value="email,name"&gt;</tt></td></tr>
+
+
+   <tr><td colspan="2"><hr size=1></td></tr>
+
+
+     <tr><td align="right"><b><a name="env_report">Field:</a></b></td><td><tt>env_report</tt><br></td></tr>
+     <tr><td align="right" valign="top"><b>Description:</b></td><td>Allows you to have Environment variables included in the
+             results email that is sent.  Useful if you wish to know what browser they were using,
+             what IP and/or PORT they were coming from or what the url of the form they filled out was.
+             The following is a list of currently supported environment variables that might be useful:<pre>
+
+REMOTE_ADDR     - The IP address of the user filling
+                  out the form.
+REMOTE_PORT     - The remote port being used by user's
+                  connection to the web server.
+HTTP_USER_AGENT - The browser the client is using
+                  to send the request.
+HTTP_REFERER    - The url of the form that was filled out.</pre>
+
+Seperate multiple entries with commas.</td></tr>
+     <tr><td align="right" valign="top"><b>Example:</b></td><td><tt>&lt;input type="hidden" name="env_report" value="REMOTE_ADDR,HTTP_USER_AGENT"&gt;</tt></td></tr>
+
+
+   <tr><td colspan="2"><hr size=1></td></tr>
+
+
+     <tr><td align="right"><b><a name="sort">Field:</a></b></td><td><tt>sort</tt><br></td></tr>
+     <tr><td align="right" valign="top"><b>Description:</b></td><td>This field allows you to choose the order in which you wish
+             for your variables to appear in the results email that is
+             sent. You can choose to have the field sorted
+             alphabetically or specify a set order in which you want the
+             fields to appear in the results email.  By leaving this field
+             out, the order will simply default to the order in which the
+             browsers sends the information to the script (which is usually
+             the same order as they appeared in the form.)  When
+             sorting by a set order of fields, you should separate field names
+             with commas. Spaces and line breaks in the field will not affect
+             the sort.  This is helpful when you have many form
+             fields and need to insert a line wrap.<br></td></tr>
+     <tr><td align="right" valign="top"><b>Example:</b></td><td>To sort alphabetically:<p>
+         <tt>&lt;input type="hidden" name="sort" value="alphabetic"&gt;</tt><p>
+         To sort by a set field order:<p>
+         <tt>&lt;input type="hidden" name="sort" value="first_name,last_name,etc..."&gt;</tt></td></tr>
+
+
+   <tr><td colspan="2"><hr size=1></td></tr>
+
+
+     <tr><td align="right"><b><a name="print_config">Field:</a></b></td><td><tt>print_config</tt><br></td></tr>
+     <tr><td align="right" valign="top"><b>Description:</b></td><td><i>print_config</i> allows you to specify which of the config
+             variables (which are all of the fields listed on this page) you would like to have printed in the results email.
+             By default, no config fields are printed in the results email. Separated multiple values with commas.<br></td></tr>
+     <tr><td align="right" valign="top"><b>Example:</b></td><td nowrap><tt>&lt;input type="hidden" name="print_config" value="email,subject"&gt;</tt></td></tr>
+
+
+   <tr><td colspan="2"><hr size=1></td></tr>
+
+
+     <tr><td align="right"><b><a name="print_blank_fields">Field:</a></b></td><td><tt>print_blank_fields</tt><br></td></tr>
+     <tr><td align="right" valign="top"><b>Description:</b></td><td><i>print_blank_fields</i> allows you to specify
+            if form fields should be left out of the results email or not. PHP FormMail defaults to including
+            blank fields, so use this to cause the results email to not include blank fields in the results email.<br></td></tr>
+     <tr><td align="right" valign="top"><b>Example:</b></td><td>If you want to NOT print any blank fields:<br>
+         <tt>&lt;input type="hidden" name="print_blank_fields" value="0"&gt;</tt><br>
+         <br>
+         If you want to print all blank fields (default behavior - this isn't really needed):<br>
+         <tt>&lt;input type="hidden" name="print_blank_fields" value="1"&gt;</tt><br>
+         <br></td></tr>
+
+   <tr><td colspan="2"><hr size=1></td></tr>
+
+
+     <tr><td align="right"><b><a name="line_spacing">Field:</a></b></td><td><tt>line_spacing</tt><br></td></tr>
+     <tr><td align="right" valign="top"><b>Description:</b></td><td><i>line_spacing</i> allows you to specify
+            the number of empty lines between name value pairs in the results email. Defaults to 0 (zero).<br></td></tr>
+     <tr><td align="right" valign="top"><b>Example:</b></td><td>
+         <tt>&lt;input type="hidden" name="line_spacing" value="1"&gt;</tt>
+         <br></td></tr>
+
+
+   <tr><td colspan="2"><hr size=1></td></tr>
+
+
+     <tr><td align="right"><b><a name="title">Field:</a></b></td><td><tt>title</tt><br></td></tr>
+     <tr><td align="right" valign="top"><b>Description:</b></td><td>This form field allows you to specify the title and header that
+             will appear on the results page (unless you specify a <i>redirect</i> URL. Default value is:<br>
+             <tt>Form Submission</tt><br></td></tr>
+     <tr><td align="right" valign="top"><b>Example:</b></td><td><tt>&lt;input type="hidden" name="title" value="Feedback Form Results"&gt;</tt></td></tr>
+
+
+   <tr><td colspan="2"><hr size=1></td></tr>
+
+
+     <tr><td align="right"><b><a name="return_link_url">Field:</a></b></td><td><tt>return_link_url</tt><br></td></tr>
+     <tr><td align="right" valign="top"><b>Description:</b></td><td>This field allows you to specify a URL that will appear, as
+             <i>return_link_title</i>, on the following results page.  This field
+             will not be used if you have the redirect field set, but it is
+             useful if you allow the user to receive the report on the
+             following page, but want to offer them a way to get back to
+             your main page.<br></td></tr>
+     <tr><td align="right" valign="top"><b>Example:</b></td><td nowrap><tt>&lt;input type="hidden" name="return_link_url" value="http://www.example.com/example.html"&gt;</tt></td></tr>
+
+
+   <tr><td colspan="2"><hr size=1></td></tr>
+
+
+     <tr><td align="right"><b><a name="return_link_title">Field:</a></b></td><td><tt>return_link_title</tt><br></td></tr>
+     <tr><td align="right" valign="top"><b>Description:</b></td><td>This is the title that will be used to link the user back to the
+             page you specify with <i>return_link_url</i>.</td></tr>
+     <tr><td align="right" valign="top"><b>Example:</b></td><td>
+         <tt>&lt;input type="hidden" name="return_link_title" value="Back to Main Page"&gt;</tt></td></tr>
+
+
+   <tr><td colspan="2"><hr size=1></td></tr>
+
+
+     <tr><td align="right"><b><a name="missing_fields_redirect">Field:</a></b></td><td><tt>missing_fields_redirect</tt><br></td></tr>
+     <tr><td align="right" valign="top"><b>Description:</b></td><td>This form field allows you to specify a URL that users will be
+             redirected to if there are fields listed in the required form
+             field that are not filled in.  This is so you can customize an
+             error page instead of displaying the default.</td></tr>
+     <tr><td align="right" valign="top"><b>Example:</b></td><td nowrap><tt>&lt;input type="hidden" name="missing_fields_redirect" value="http://www.example.com/error.html"&gt;</tt></td></tr>
+
+
+   <tr><td colspan="2"><hr size=1></td></tr>
+
+     <tr><td align="right"><b><a name="missing_fields_message">Field:</a></b></td><td><tt>missing_fields_message</tt><br></td></tr>
+     <tr><td align="right" valign="top"><b>Description:</b></td><td>This form field allows you to specify a customized message
+     on the default error page.</td></tr>
+     <tr><td align="right" valign="top"><b>Example:</b></td><td nowrap><tt>&lt;input type="hidden" name="missing_fields_message" value="Please fill in all fields."&gt;</tt></td></tr>
+
+
+   <tr><td colspan="2"><hr size=1></td></tr>
+
+
+     <tr><td align="right"><b><a name="background">Field:</a></b></td><td><tt>background</tt><br></td></tr>
+     <tr><td align="right" valign="top"><b>Description:</b></td><td>This form field allow you to specify a background image
+         that will appear if you do not have the redirect field set.  This image
+         will appear as the background to the form results page.<br></td></tr>
+     <tr><td align="right" valign="top"><b>Example:</b></td><td>
+         <tt>&lt;input type="hidden" name="background" value="http://www.example.com/image.gif"&gt;</tt></td></tr>
+
+
+   <tr><td colspan="2"><hr size=1></td></tr>
+
+
+     <tr><td align="right"><b><a name="bgcolor">Field:</a></b></td><td><tt>bgcolor</tt><br></td></tr>
+     <tr><td align="right" valign="top"><b>Description:</b></td><td>This form field allow you to specify a bgcolor for the
+         form results page in much the way you specify a background image.  This
+         field will be ignored if the <i>redirect</i> field is.<br></td></tr>
+     <tr><td align="right" valign="top"><b>Example:</b></td><td><tt>&lt;input type="hidden" name="bgcolor" value="#FFFFFF"&gt;</tt></td></tr>
+
+
+   <tr><td colspan="2"><hr size=1></td></tr>
+
+
+     <tr><td align="right"><b><a name="text_color">Field:</a></b></td><td><tt>text_color</tt><br></td></tr>
+     <tr><td align="right" valign="top"><b>Description:</b></td><td>This field will change the color of the text on the results page.<br></td></tr>
+     <tr><td align="right" valign="top"><b>Example:</b></td><td><tt>&lt;input type="hidden" name="text_color" value="#000000"&gt;</tt></td></tr>
+
+
+   <tr><td colspan="2"><hr size=1></td></tr>
+
+
+     <tr><td align="right"><b><a name="link_color">Field:</a></b></td><td><tt>link_color</tt><br></td></tr>
+     <tr><td align="right" valign="top"><b>Description:</b></td><td>This field will change the color of the links on the results page.<br></td></tr>
+     <tr><td align="right" valign="top"><b>Example:</b></td><td><tt>&lt;input type="hidden" name="link_color" value="#FF0000"&gt;</tt></td></tr>
+
+
+   <tr><td colspan="2"><hr size=1></td></tr>
+
+
+     <tr><td align="right"><b><a name="vlink_color">Field:</a></b></td><td><tt>vlink_color</tt><br></td></tr>
+     <tr><td align="right" valign="top"><b>Description:</b></td><td>Changes the color of visited links on the results page.<br></td></tr>
+     <tr><td align="right" valign="top"><b>Example:</b></td><td><tt>&lt;input type="hidden" name="vlink_color" value="#0000FF"&gt;</tt></td></tr>
+
+
+   <tr><td colspan="2"><hr size=1></td></tr>
+
+
+     <tr><td align="right"><b><a name="alink_color">Field:</a></b></td><td><tt>alink_color</tt><br></td></tr>
+     <tr><td align="right" valign="top"><b>Description:</b></td><td>Changes the color of active links on the resulting page.<br></td></tr>
+     <tr><td align="right" valign="top"><b>Example:</b></td><td><tt>&lt;input type="hidden" name="alink_color" value="#0000FF"&gt;</tt></td></tr>
+
+
+     <tr><td colspan="2"><hr size=1></td></tr>
+
+<tr><td colspan="2">
+    <p>
+Any other form fields that appear in your script will be mailed back to
+you.<p>
+
+
+
+
+  </td></tr></table>
+ </body>
+</html>
