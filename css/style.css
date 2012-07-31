@@ -69,6 +69,52 @@ table{
 \*------------------------------------*/
 /* GO! */
 
+/* 
+Scroll down to see NAV CSS.
+
+Pure CSS3 Ribbon Menu 
+http://stephenbelovarich.com
+v1.2b1 | 201207
+NOTE:WORK IN PROGRESS
+USE WITH CAUTION, ADAPT TO YOUR LAYOUT
+
+This ribbon menu is different than most. It includes a cool 3D hover effect that can also be made :active, making it look pressed down. 
+
+
+v 1.1 
+
+fixed FF13 and iOS bug that dropped .navafter below the ribbon, good for keeping the 3D illusion.
+
+removed box-shadow from nav ul, was making a hairline horizontal impression on the top of each pressed down nav element.
+
+added gradients to .navbefore and .navafter to emphasize their depth against the background cut out ends
+
+removed reset, b/c codepen includes it now
+
+v 1.0
+
+CSS3 Transforms! The buttons are just begging to be animated.
+
+CSS3 Gradients! Hover over a button to see what I mean.
+
+Depth while hovering is created using pseudo elements, transform and gradients.
+
+When the nav is directed to content on a single page layout on iPad the default behavior keeps touched buttons pressed down. You could make an active pseudo class to keep the active button pressed when the user is viewing content.
+
+Lots of pseudo elements! Whoo hoo! Which means older versions of IE can't handle it. But then again, it says CSS3 Ribbon Menu
+
+Eric Meyer's RESET used, just b/c its always in my CSS so included it here to make sure everything works. *REMOVED in v1.1
+
+Well commented so you can learn how it was made.
+
+*/
+
+
+/*------------------------------------*\
+  MAIN
+\*------------------------------------*/
+/* GO! */
+
 body { 
  font: 14px "Helvetica", Helvetica, Arial, sans-serif;
  color: #000;
@@ -89,7 +135,8 @@ h1, h2, h3, h4, h5 {
 
 #container {
 	width:100%;
-	height:100%;
+	height:auto;
+  padding-bottom:320px;
 	background: #f9f9f9; /* Old browsers */
 /* IE9 SVG, needs conditional override of 'filter' to 'none' */
 background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMjYlIiBzdG9wLWNvbG9yPSIjZjlmOWY5IiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2JmYmZiZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9yYWRpYWxHcmFkaWVudD4KICA8cmVjdCB4PSItNTAiIHk9Ii01MCIgd2lkdGg9IjEwMSIgaGVpZ2h0PSIxMDEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
@@ -154,7 +201,7 @@ header a:link, header a:visited {
 #menu:after, #menu:before {
     margin-top:0.5em;
     content: "";
-    border:1.8em solid #aa0000; /* Old browsers */
+    border:1.8em solid #BF0300; /* Old browsers */
     float:left;
     position:relative;
     margin-top:14px;
@@ -181,9 +228,10 @@ nav {
 	 float:left;
 	top:0;
 	left:0;
-	-webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 6px;
-	-moz-box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 6px;
-	box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 6px;
+	/*-moz-box-shadow:  -6px 8px 6px -6px rgba(0,0,0,0.4);
+  -webkit-box-shadow: -6px 8px 6px -6px rgba(0,0,0,0.4);
+  box-shadow:         -6px 8px 6px -6px rgba(0,0,0,0.4);
+ dropped due to error on iOS, fix soon */
 	z-index:1;
 }
 
@@ -207,7 +255,17 @@ position:relative;
 display:block;
 width: 48px !important; /* must equal nav li:first-child margin-left */
 height: 56px;
-background: #BF0300; 
+background: rgb(170,0,0); /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2FhMDAwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjU4JSIgc3RvcC1jb2xvcj0iI2JmMDMwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk5JSIgc3RvcC1jb2xvcj0iI2JmMDMwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+background: -moz-linear-gradient(left,  rgba(170,0,0,1) 0%, rgba(191,3,0,1) 58%, rgba(191,3,0,1) 99%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(170,0,0,1)), color-stop(58%,rgba(191,3,0,1)), color-stop(99%,rgba(191,3,0,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left,  rgba(170,0,0,1) 0%,rgba(191,3,0,1) 58%,rgba(191,3,0,1) 99%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left,  rgba(170,0,0,1) 0%,rgba(191,3,0,1) 58%,rgba(191,3,0,1) 99%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left,  rgba(170,0,0,1) 0%,rgba(191,3,0,1) 58%,rgba(191,3,0,1) 99%); /* IE10+ */
+background: linear-gradient(to right,  rgba(170,0,0,1) 0%,rgba(191,3,0,1) 58%,rgba(191,3,0,1) 99%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aa0000', endColorstr='#bf0300',GradientType=1 ); /* IE6-8 */
+
 z-index:1;
  float:left;
 }
@@ -216,17 +274,24 @@ z-index:1;
 
 position: relative; 
 display:block;
+left:0px;
 width: 280px; /* must compensate for width of ul element, this width is changed via jQuery to compensate for hover */
 height: 56px;
-
 /*margin-left:548px;*/
-background: #BF0300; 
+background: rgb(191,3,0); /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2JmMDMwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjgzJSIgc3RvcC1jb2xvcj0iI2JmMDMwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNhYTAwMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(left,  rgba(191,3,0,1) 0%, rgba(191,3,0,1) 83%, rgba(170,0,0,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(191,3,0,1)), color-stop(83%,rgba(191,3,0,1)), color-stop(100%,rgba(170,0,0,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left,  rgba(191,3,0,1) 0%,rgba(191,3,0,1) 83%,rgba(170,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left,  rgba(191,3,0,1) 0%,rgba(191,3,0,1) 83%,rgba(170,0,0,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left,  rgba(191,3,0,1) 0%,rgba(191,3,0,1) 83%,rgba(170,0,0,1) 100%); /* IE10+ */
+background: linear-gradient(to right,  rgba(191,3,0,1) 0%,rgba(191,3,0,1) 83%,rgba(170,0,0,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf0300', endColorstr='#aa0000',GradientType=1 ); /* IE6-8 */
 z-index:1;
  float:right;
 	
 }
-
-
 
 /* since the #menu container uses before and after to style the ends of the ribbon, 
 i decided to make the folds on either side of the nav using :before and :after 
@@ -268,7 +333,8 @@ nav li {
     -o-transform: translate(0px, 0px);
     -ms-transform:  translate(0px, 0px);
     transform: translate(0px, 0px);
-    
+  
+
 }
 
 
@@ -286,23 +352,9 @@ nav li a:link, nav li a:visited {
 	padding: 0 1.2125em;
 	text-decoration: none;
 	font-weight:bolder;
-
-}
-
-
-.navbefore, .navafter, nav li a:link,  nav li a:visited {
+	background: #BF0300;
  
- background: rgb(191,3,0); /* Old browsers */
-/* IE9 SVG, needs conditional override of 'filter' to 'none' */
-background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSI0MSUiIHN0b3AtY29sb3I9IiNiZjAzMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjYWEwMDAwIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
-background: -moz-linear-gradient(top,  rgba(191,3,0,1) 41%, rgba(170,0,0,1) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(41%,rgba(191,3,0,1)), color-stop(100%,rgba(170,0,0,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  rgba(191,3,0,1) 41%,rgba(170,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  rgba(191,3,0,1) 41%,rgba(170,0,0,1) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  rgba(191,3,0,1) 41%,rgba(170,0,0,1) 100%); /* IE10+ */
-background: linear-gradient(top,  rgba(191,3,0,1) 41%,rgba(170,0,0,1) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf0300', endColorstr='#aa0000',GradientType=0 ); /* IE6-8 */
-  
+
 }
 
 /* transforms the li element on hover, could be animated instead */
@@ -313,7 +365,7 @@ nav li:hover {
         -o-transform: translate(18px, -8px);
         -ms-transform:  translate(18px, -8px);
         transform: translate(18px, -8px);
-	padding-top:18px;
+	padding-top:18px !important; /* Fixes hover glitch when user moves mouse just above the pressed down li element */
 }
 
 /* changes the background color of the link inside the list element */
@@ -333,41 +385,37 @@ background: -ms-linear-gradient(left,  rgba(155,0,0,1) 0%,rgba(191,3,0,1) 50%,rg
 background: linear-gradient(left,  rgba(155,0,0,1) 0%,rgba(191,3,0,1) 50%,rgba(163,0,0,1) 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9b0000', endColorstr='#a30000',GradientType=1 ); /* IE6-8 */
 }
-
-
-/* gices the list element a skewed depth pseudo element to the left (before) , fold to the right (after) */
-
-    
+/* gives the list element a skewed depth pseudo element to the left (before) , fold to the right (after) */
      nav ul li:before, nav ul li:after
     {
         content: '';
         position: absolute;
-        border-style: solid;
+       
         border-color: transparent;
         bottom: 0px;
+
+  
     }
     
      nav ul li:before {
-	    display:none;
+	    
+   display:block;
+ 
+       width:0px;
+       height:0px;
 	    	-moz-transform: translate(0px,0px) skew(0deg,0deg);
 		-webkit-transform: translate(0px,0px) skew(0deg,0deg);
         -o-transform: translate(0px,0px) skew(0deg,0deg);
         -ms-transform: translate(0px,0px) skew(0deg,0deg);
         transform: translate(0px,0px) skew(0deg,0deg);
-
-    }
+	
+}
 
      nav ul li:hover:before  {
        display:block;
-       width:16px;
-       height:50px;
-       border-left: 1px solid #A50200 ;
-       border-right: 1px solid #5E0100 ;
-      	-moz-transform: translate(-18px,-5px) skew(0deg,28deg);
-		-webkit-transform: translate(-18px,-5px) skew(0deg,28deg);
-        -o-transform: translate(-18px,-5px) skew(0deg,28deg);
-        -ms-transform: translate(-18px,-5px) skew(0deg,28deg);
-        transform: translate(-18px,-5px) skew(0deg,28deg);
+       width:18px;
+       height:56px;
+ 
 		background: rgb(191,3,0); /* Old browsers */
 		/* IE9 SVG, needs conditional override of 'filter' to 'none' */
 		background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIxJSIgc3RvcC1jb2xvcj0iI2JmMDMwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQwJSIgc3RvcC1jb2xvcj0iI2EzMDAwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4NDA0MDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
@@ -378,7 +426,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9b0000', end
 		background: -ms-linear-gradient(left,  rgba(191,3,0,1) 1%,rgba(163,0,0,1) 40%,rgba(132,4,0,1) 100%); /* IE10+ */
 		background: linear-gradient(left,  rgba(191,3,0,1) 1%,rgba(163,0,0,1) 40%,rgba(132,4,0,1) 100%); /* W3C */
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf0300', endColorstr='#840400',GradientType=1 ); /* IE6-8 */
-		  
+		   
+  
+		-webkit-transform: translate(-18px,-5px) skew(0deg,28deg);
+        -o-transform: translate(-18px,-5px) skew(0deg,28deg);
+        -ms-transform: translate(-18px,-5px) skew(0deg,28deg);
+        transform: translate(-18px,-5px) skew(0deg,28deg);
+  			-moz-transform: translate(-18px,-5px) skew(0deg,28deg);
     }
     
  
@@ -387,6 +441,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9b0000', end
         border-width: 0 0 10px 10px;
         border-left-color: #5E0100;
         right: -10px;
+   border-style: solid;
        
     }
     
@@ -401,174 +456,27 @@ nav li:hover + li  {
         transform: translate(18px, 0px);
 	
 }
- 
- 
-/* CONTENT */
 
-
-#content {
+/*nav li:hover + span  {
+	width:262px;
+	-moz-transform: translate(0px, 0px);
+		-webkit-transform: translate(0px, 0px);
+        -o-transform: translate(0px, 0px);
+        -ms-transform:  translate(0px, 0px);
+        transform: translate(0px, 0px);
 	
-	width:100%;
-	height:80%;
-	top:10%;
-	margin-top:32px;
-	margin-left:auto;
-	margin-right:auto;
-	margin-bottom:10%;
-	clear:both;
-	
-	
-}
-section {
-	width:100%;
-	height: 100%;
-	padding-top:2%;
-	padding-bottom:2%;
-	margin:auto;
-}
+}*/
 
-section .textblock {
-	width: 66%;
-	margin: 0 17% 0 17%;
-	line-height: 1.4em;
-}
-section .textblock p {
-	margin-bottom:2em;
-}
-
-#contact {
-	width: 60%;
-	height: 40%;
-	margin:auto;
+#credits {
+  clear:both;
+  font-size: 0.5em;
+  width: 100%;
+  text-align: center;
+  padding-top: 36px;
 }
 
 
-footer {
-	width: 100%;
-	height: 10%;
-	bottom: 0px;
-	color: #eee;
-	position: fixed;
-	clear:both;
-	
-	background: #7d7e7d; /* Old browsers */
-/* IE9 SVG, needs conditional override of 'filter' to 'none' */
-background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdkN2U3ZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwZTBlMGUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-background: -moz-linear-gradient(top,  #7d7e7d 0%, #0e0e0e 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7d7e7d), color-stop(100%,#0e0e0e)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* IE10+ */
-background: linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-8 */
+/* experimental css fix for last nav element */
 
-}
 
-/* forms */
 
-form {
-	width:800px;
-	height: 440px;
-	margin: 0 auto 0 auto;
-}
-
-#contact .form {
-	margin-top:-120px;
-	margin-bottom: 120px;
-}
-#contact h1 {
-	margin-left: 100px;
-}
-
-input, textarea {
-
-margin: 0; 
-padding: 0; 
-border: 0; 
-outline: none;
-
-}
-
-input[type="text"] { width: 240px; }
-
-input, textarea { 
-background-color: #eee; 
-border: 4px solid #8b8b8b; 
-padding: 2px; 
-color: #4b4b4b; 
-font-size: 1.1em; 
--webkit-border-radius: 5px; 
--moz-border-radius: 5px; 
-border-radius: 5px;
-margin-top:-24px; 
-margin-bottom: 0px; 
-margin-left:72px;
-}
-
-dl {
-	margin-top:1.4em;
-}
-input {
-	position:relative;
-	top:-14px;
-}
-textarea {
-	width:320px;
-	color: #000;
-	resize: none;
-}
-
-input:focus, textarea:focus { 
-border: 4px solid #8b8b8b; 
-background-color:#fff; 
-}
-
-button[type="submit"], button[type="reset"] { 
-border: none; 
-cursor: pointer; 
-color: #fff; 
-font-size: 1.2em; 
-background-color: #000; 
-padding: 5px 36px 8px 36px; 
--webkit-border-radius: 10px; 
--moz-border-radius: 10px; 
--webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); 
--moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); 
-border-bottom: 1px solid rgba(0, 0, 0, 0.4); 
-border-top: 1px solid rgba(255, 255, 255, 0.6);
-}
-
-#contact em {
-	color: #d73027;
-	position:relative;
-	
-top:-16px;
-left: 8px;
-	
-}
-label {
-	text-align:right;
-	
-	font-size:1.1em;
-	
-	top:4px;
-	color: #000;
-	text-shadow: none;
-	
-}
-
-.error {
-color: #d73027;
-text-shadow: none;
-position:relative;
-top:-16px;
-z-index: 9999;
-padding-left:8px;
-}
-
-#submit_buttons {
-	float:right;
-	position: relative;
-	left:-120px;
-	top:-38px;
-}
